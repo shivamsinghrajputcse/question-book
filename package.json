@@ -2,9 +2,9 @@
   "name": "questionb",
   "version": "1.0.0",
   "description": "Backend of Question B",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/server.js"
   },
   "author": "Debasish",
   "license": "ISC",

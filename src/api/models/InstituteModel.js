@@ -1,31 +1,14 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+// const examPaper = require("./ExamModel");
 
 const instituteSchema = new mongoose.Schema({
     instituteName: String,
     altName: [String],
     website: String,
 
-    semesters: [String],
-    examTyps: [String],
+    sessions: [String],
+    examTypes: [String],
     branches: [String],
+});
 
-    questionPapers: [
-        examPaperSchema
-    ]
-})
-
-// const paperSchema = new mongoose.Schema({
-//     title: String,
-//     pdfLink: String
-// })
-
-// const examPaperSchema = new mongoose.Schema({
-
-//     branch: String,
-//     session: String,
-//     semType: String,
-//     papers: [paperSchema]
-
-// })
-
-module.exports = mongoose.Model("Institute", instituteSchema);
+module.exports = mongoose.model("Institute", instituteSchema);
