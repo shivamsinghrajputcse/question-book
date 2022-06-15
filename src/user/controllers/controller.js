@@ -1,7 +1,6 @@
 const app = require("../../app")
 
 const addNewInstitute = (data) => {
-    console.log(data);
     fetch("http://localhost:8080/api/v1/institute",
         {
             method: 'POST', // or 'PUT'

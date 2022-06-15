@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const controller = require("../controllers/controller")
 
+
 router.route('/')
     .get((req, res) => {
         res.send("API Home");
@@ -13,18 +14,29 @@ router.route('/')
 
 router.route("/institute")
     .get((req, res) => {
-        res.json(req.body);
+        controller.getAllInstitute().then(data => {
+            res.json(data);
+        });
     })
     .post((req, res) => {
-        controller.addNewInstitute(req.body)
+        controller.addNewInstitute(req.body), then(res => {
+            res.Status
+        })
+
 
     });
 
 router.route("/institute/:id")
     .get((req, res) => {
-        const institute = controller.getOneInstitute(req.params.id);
-        res.json(institute);
+        controller.getOneInstitute(req.params.id).then(data => {
+            res.json(data);
+        });
     });
+
+router.route("/ad")
+    .post((req, res) => {
+        console.log(req.query);
+    })
 
 
 module.exports = router;

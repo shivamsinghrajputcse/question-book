@@ -27,11 +27,15 @@ const addNewInstitute = async (data) => {
 
 }
 
+const getAllInstitute = async () => {
+    return await Institute.find({}, "instituteName sessions branches examTypes").exec();
+}
 const getOneInstitute = async (id) => {
-    return await Institute.findById(id, "instituteName, sessions, branches, examTypes").exec();
+    return await Institute.findById(id, "instituteName sessions branches examTypes").exec();
 }
 module.exports = {
     getOneInstitute,
+    getAllInstitute,
     addNewInstitute,
 
 }

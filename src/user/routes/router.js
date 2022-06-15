@@ -4,7 +4,6 @@
 
 
 const router = require("express").Router();
-const app = require("../../app");
 const controller = require("../controllers/controller")
 
 router.route('/')
