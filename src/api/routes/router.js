@@ -20,7 +20,7 @@ router.route("/institute")
         });
     })
     .post((req, res) => {
-        controller.addNewInstitute(req.body), then(res => {
+        controller.addNewInstitute(req.body).then(res => {
             res.send("OKK");
         })
     });
@@ -34,8 +34,15 @@ router.route("/institute/:id")
 
 
 router.route("/paper").post(upload.single("pdf"), (req, res) => {
-    res.send("Success");
-    console.log(req.file, req.body);
+    controller.addNewExam(req.file, req.body).then(data => {
+        if (data) {
+            res.send(data);
+        } else {
+            res.send("Success");
+        }
+
+    })
+    console.log(req.file);
 });
 router.route("/ad")
     .post((req, res) => {

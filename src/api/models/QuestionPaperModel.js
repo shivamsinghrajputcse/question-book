@@ -1,16 +1,8 @@
-import { Schema, Model, model } from "mongoose";
+const mongoose = require("mongoose");
 
-const questionPaperSchema = new Schema({
+module.exports = questionPaperSchema = new mongoose.Schema({
     title: String,
     examType: String,
     pdf: String
 });
 
-const questionPaper = Model("QuestionPaper", questionPaper);
-
-
-//--------------exports
-module.exports = {
-    questionPaperSchema,
-    questionPaper
-};

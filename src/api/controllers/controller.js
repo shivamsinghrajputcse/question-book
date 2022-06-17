@@ -1,4 +1,5 @@
-const Institute = require("../models/InstituteModel")
+const Institute = require("../models/InstituteModel");
+const Paper = require("../models/ExamModel");
 
 
 // const getInstituteNames = (req, res) => {
@@ -33,9 +34,26 @@ const getAllInstitute = async () => {
 const getOneInstitute = async (id) => {
     return await Institute.findById(id, "instituteName sessions branches examTypes").exec();
 }
+
+const addNewExam = async (fileData, fromData) => {
+    const newPaper = new Paper({
+        instituteId: fromData.institute_id,
+        session: fromData.session,
+        branch: fromData.branch,
+        papers: [
+            {
+                title: fromData.title,
+                examType: fromData.examType,
+                pdf: fileData.path,
+            }
+        ]
+    });
+    await newPaper.save();
+}
 module.exports = {
     getOneInstitute,
     getAllInstitute,
     addNewInstitute,
+    addNewExam
 
 }

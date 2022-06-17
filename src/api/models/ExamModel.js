@@ -1,17 +1,12 @@
-import { Schema, Model } from "mongoose";
-const Institute = require("./InstituteModel");
+const mongoose = require("mongoose");
 const questionPaper = require("./QuestionPaperModel");
 
-const examSchema = new Schema({
-    instituteId: Institute.Types.ObjectId,
+const examSchema = new mongoose.Schema({
+    instituteId: mongoose.ObjectId,
     session: String,
     branch: String,
-    papers: [questionPaper.questionPaperSchema]
+    papers: [questionPaper]
 });
 
-const exam = Model("ExamPaper", examPapersSchema);
+module.exports = mongoose.model("ExamPaper", examSchema);
 
-module.exports = {
-    examSchema,
-    exam
-};
