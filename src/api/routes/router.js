@@ -1,6 +1,7 @@
 // API call routers "api/v1/"
 const router = require("express").Router();
 const controller = require("../controllers/controller")
+const upload = require("../middleware/uplaod");
 
 
 router.route('/')
@@ -8,7 +9,7 @@ router.route('/')
         res.send("API Home");
     })
     .post((req, res) => {
-        res.send("data Recived");
+        res.send("Dosen't Expect any Data.");
     });
 
 
@@ -20,10 +21,8 @@ router.route("/institute")
     })
     .post((req, res) => {
         controller.addNewInstitute(req.body), then(res => {
-            res.Status
+            res.send("OKK");
         })
-
-
     });
 
 router.route("/institute/:id")
@@ -33,6 +32,11 @@ router.route("/institute/:id")
         });
     });
 
+
+router.route("/paper").post(upload.single("pdf"), (req, res) => {
+    res.send("Success");
+    console.log(req.file, req.body);
+});
 router.route("/ad")
     .post((req, res) => {
         console.log(req.query);

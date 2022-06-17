@@ -8,6 +8,8 @@ const questionPaperSchema = new Schema({
 
 const questionPaper = Model("QuestionPaper", questionPaper);
 
+
+//--------------exports
 module.exports = {
     questionPaperSchema,
     questionPaper
