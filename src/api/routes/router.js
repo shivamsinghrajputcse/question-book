@@ -1,7 +1,7 @@
 // API call routers "api/v1/"
 const router = require("express").Router();
 const controller = require("../controllers/controller")
-const upload = require("../middleware/uplaod");
+const upload = require("../middleware/multerUpload");
 
 
 router.route('/')
