@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true })); // insted of body parser
 
-//all the API route Handler
+//the API route Handler
 app.use("/api/v1/", apiRouter);
 // user web app route handler
 app.use("/", userRouter);

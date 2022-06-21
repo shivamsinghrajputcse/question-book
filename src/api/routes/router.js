@@ -1,8 +1,11 @@
 // API call routers "api/v1/"
 const router = require("express").Router();
-const controller = require("../controllers/controller")
+const controller = require("../controllers/controller");
 const upload = require("../middleware/multerUpload");
+const s3Upload = require("../middleware/s3Service");
 
+
+const Paper = require("../models/ExamModel");
 
 router.route('/')
     .get((req, res) => {
@@ -16,12 +19,17 @@ router.route('/')
 router.route("/institute")
     .get((req, res) => {
         controller.getAllInstitute().then(data => {
-            res.json(data);
+            res.send(data);
         });
     })
     .post((req, res) => {
-        controller.addNewInstitute(req.body).then(res => {
-            res.send("OKK");
+        controller.addNewInstitute(req.body).then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.send("success");
+            }
+
         })
     });
 
@@ -33,17 +41,30 @@ router.route("/institute/:id")
     });
 
 
-router.route("/paper").post(upload.single("pdf"), (req, res) => {
-    controller.addNewExam(req.file, req.body).then(data => {
-        if (data) {
-            res.send(data);
-        } else {
-            res.send("Success");
-        }
-
+router.route("/paper")
+    .post(upload.single("pdf"), async (req, res) => {
+        const result = await s3Upload(req.file, req.body);
+        controller.addNewExam(result.Location, req.body).then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.send("Success");
+            }
+        })
     })
-    console.log(req.file);
-});
+    .patch(upload.single("pdf"), async (req, res) => {
+        const result = await s3Upload(req.file, req.body);
+        controller.addNewPaperToExam(result.Location, req.body).then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.send("Success");
+            }
+        })
+    });
+
+
+
 router.route("/ad")
     .post((req, res) => {
         console.log(req.query);
