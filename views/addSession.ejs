@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Question Book</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+
+<body style="transform: perspective(0px) translate(0px);">
+    <%- include ("Partials/navbar.ejs") %>
+
+        <form class="border rounded shadow p-3 p-md-4 p-lg-5" method="post" style="width: 90%; margin: 2% auto;">
+            <h1>Add Session</h1>
+            <label class="form-label">College Name:&nbsp;</label>
+            <div class="mb-3">
+
+                <select name="college" id="college" class="form-control">
+                    <option value="">Select College</option>
+                    <option value="1">College of Engineering</option>
+                    <option value="2">College of Business</option>
+                    <option value="3">College of Arts</option>
+                    <option value="4">College of Science</option>
+                </select>
+
+            </div>
+            <label class="form-label">Session :&nbsp;</label>
+            <div class="mb-3">
+                <input type="text" name="session" id="session" class="form-control" placeholder="2022 Spring_Semester">
+            </div>
+
+            <div class="mb-3"><button class="btn btn-primary" type="submit">ADD Session</button>
+            </div>
+        </form>
+
+        <%- include("Partials/footer.ejs") %>
+            <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

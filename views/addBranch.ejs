@@ -13,7 +13,7 @@
     <%- include ("Partials/navbar.ejs") %>
 
         <form class="border rounded shadow p-3 p-md-4 p-lg-5" method="post" style="width: 90%; margin: 2% auto;">
-            <h1>Add Paper</h1>
+            <h1>Add Branch</h1>
             <label class="form-label">College Name:&nbsp;</label>
             <div class="mb-3">
 
@@ -24,7 +24,7 @@
                     <option value="3">College of Arts</option>
                     <option value="4">College of Science</option>
                 </select>
-                <a class="" href="/addInstitute">Add new Institute</a>
+
             </div>
             <label class="form-label">Session :&nbsp;</label>
             <div class="mb-3">
@@ -36,25 +36,15 @@
                     <option value="3">Session 3</option>
                     <option value="4">Session 4</option>
                 </select>
-                <a class="" href="/addSession">Add new Session</a>
+
             </div>
             <label class="form-label">Branch :&nbsp;</label>
             <div class="mb-3">
-                <select name="branch" id="branch" class="form-control">
-                    <option value="">Select Branch</option>
-                    <option value="1">CSE</option>
-                    <option value="2">Civil</option>
-                    <option value="3">Electronics</option>
-                    <option value="4">ECE</option>
-                </select>
-                <a class="" href="/addBranch">Add new Branch</a>
+
+                <input type="text" name="branch" id="branch" class="form-control" placeholder="Computer Science">
             </div>
-            <label class="form-label">PDF :&nbsp;</label>
-            <div class="mb-3">
-                <input type="file" name="question" id="file">
-                <p><i>file must be less than 4 MB and a PDF</i></p>
-            </div>
-            <div class="mb-3"><button class="btn btn-primary" type="submit">ADD</button>
+
+            <div class="mb-3"><button class="btn btn-primary" type="submit">ADD Branch</button>
             </div>
         </form>
 

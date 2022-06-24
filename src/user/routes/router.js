@@ -17,7 +17,21 @@ router.route('/addInstitute')
     })
     .post((req, res) => {
         controller.addNewInstitute(req.body);
-        res.redirect("/");
+        res.redirect("/addPaper");
+    });
+router.route("/addPaper")
+    .get((req, res) => {
+        res.render("addPaper");
+    });
+//get route for addsession
+router.route("/addSession")
+    .get((req, res) => {
+        res.render("addSession");
+    });
+//get route for addbranch
+router.route("/addBranch")
+    .get((req, res) => {
+        res.render("addBranch");
     });
 
 

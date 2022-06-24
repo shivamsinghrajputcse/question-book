@@ -1,9 +1,38 @@
-<form action="/addInstitute" method="post">
-    <label for="institute-name">Institute name: </label>
-    <input type="text" name="institute_name" id="institute-name">
-    <label for="alt-name">Alternate names: </label>
-    <input type="text" name="alt_name" id="alt-name">
-    <label for="website">College Website: </label>
-    <input type="text" name="website" id="website">
-    <input type="submit" value="Add Institute">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Question Book</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+
+<body style="transform: perspective(0px) translate(0px);">
+    <%- include ("Partials/navbar.ejs") %>
+
+        <form action="/addInstitute" class="border rounded shadow p-3 p-md-4 p-lg-5" method="post"
+            style="width: 90%; margin: 2% auto;">
+            <h1>Add Institute</h1>
+            <label class="form-label">College Name:&nbsp;</label>
+            <div class="mb-3">
+
+                <input type="text" name="institute_name" id="institute-name" class="form-control">
+            </div>
+            <label class="form-label">Alternative Names :&nbsp;</label>
+            <div class="mb-3">
+                <input type="text" name="alt_name" id="alt-name" class="form-control">
+            </div>
+            <label class="form-label">Website :&nbsp;</label>
+            <div class="mb-3">
+                <input type="text" name="website" id="website" class="form-control">
+            </div>
+            <div class="mb-3"><button class="btn btn-primary" type="submit">ADD INSTITUTE</button>
+            </div>
+        </form>
+        <%- include("Partials/footer.ejs") %>
+            <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
