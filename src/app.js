@@ -1,5 +1,5 @@
 const express = require("express");
-const ejs = require("ejs");
+// const ejs = require("ejs");
 // const _ = require("lodash");
 
 //local require
@@ -13,6 +13,11 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true })); // insted of body parser
+
+
+//use static files
+app.use(express.static(__dirname + "/public"));
+// app.use(express.static("public"));
 
 //the API route Handler
 app.use("/api/v1/", apiRouter);

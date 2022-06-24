@@ -63,7 +63,16 @@ router.route("/paper")
         })
     });
 
-
+//get request for route "/api/v1/paper/:id"
+router.route("/paper/:id")
+    .get((req, res) => {
+        controller.getOnePaper(req.params.id).then(data => {
+            //check for errors
+            if (data) {
+                res.json(data);
+            }
+        });
+    });
 
 router.route("/ad")
     .post((req, res) => {

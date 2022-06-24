@@ -54,6 +54,11 @@ const addNewExam = async (filePath, fromData) => {
     return await newPaper.save();
 }
 
+const getOnePaper = async (id) => {
+    return await Paper.findById(id, "instituteId session branch papers").exec();
+}
+
+
 const addNewPaperToExam = async (filePath, fromData) => {
     return await Paper.updateOne({
         instituteId: fromData.instituteId,
@@ -80,6 +85,7 @@ module.exports = {
     addNewInstitute,
     addNewExam,
     addNewPaperToExam,
-    getExamPapers
+    getExamPapers,
+    getOnePaper,
 
 }
