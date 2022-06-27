@@ -1,7 +1,8 @@
 const app = require("../../app")
+const axios = require('axios').default;
 
-const addNewInstitute = (data) => {
-    fetch("http://localhost:8080/api/v1/institute",
+const addNewInstitute = async (data, origin) => {
+    fetch(origin + "/api/v1/institute",
         {
             method: 'POST', // or 'PUT'
             headers: {
@@ -11,14 +12,23 @@ const addNewInstitute = (data) => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Success:', data);
+            return data;
         })
         .catch((error) => {
-            console.error('Error:', error);
+            return error;
         });
 }
 
+const getAllInstitute = async (origin) => {
+    try {
+        const response = await axios.get(origin + "/api/v1/institute");
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
 
 module.exports = {
-    addNewInstitute
+    addNewInstitute,
+    getAllInstitute
 }

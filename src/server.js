@@ -4,9 +4,7 @@ const connectDB = require(__dirname + "/api/db/connectDB");
 const app = require(__dirname + "/app");
 
 const PORT = process.env.PORT || 8080;
-
-//env
-const URI = "mongodb://localhost:2717/test";
+const URI = process.env.MONGODB_URI;
 
 
 async function start() {
