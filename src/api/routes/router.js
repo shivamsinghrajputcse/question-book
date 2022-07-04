@@ -40,10 +40,22 @@ router.route("/institute/:id")
         });
     });
 
-// add session post route
+//route for add session
 router.route("/session")
     .post((req, res) => {
         controller.addNewSession(req.body).then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.send("success");
+            }
+        });
+    });
+
+// route for adding branch
+router.route("/branch")
+    .post((req, rees) => {
+        controller.addNewBranch(req.body).then(data => {
             if (data) {
                 res.send(data);
             } else {

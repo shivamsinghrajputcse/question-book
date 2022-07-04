@@ -32,6 +32,18 @@ const addNewSession = async (formData) => {
     );
 }
 
+const addNewBranch = async (fromData) => {
+    return await Institute.findOneAndUpdate({
+        instituteName: fromData.instituteName,
+    },
+        {
+            $push: {
+                branches: fromData.branch,
+            }
+        },
+    );
+}
+
 
 // get all the papers for an exam
 const getExamPapers = async (fromData) => {

@@ -7,8 +7,10 @@ router.route('/')
         const institutes = await controller.getAllInstitute(req.get('origin'));
         const institutesData = institutes.data;
         res.render("index");
-    })
+    });
 
+
+//route fro add new Institute
 router.route('/addInstitute')
     .get((req, res) => {
         res.render("addInstitute");
@@ -28,7 +30,7 @@ router.route("/addPaper")
         res.render("addPaper");
     });
 
-//get route for add session
+//route for add session
 router.route("/addSession")
     .get((req, res) => {
         res.render("addSession");
@@ -38,10 +40,14 @@ router.route("/addSession")
         res.redirect("/addPaper");
     });
 
-//get route for add branch
+//route for add branch
 router.route("/addBranch")
     .get((req, res) => {
         res.render("addBranch");
+    })
+    .post((req, res) => {
+        controller.addNewBranch(req.body);
+        res.redirect("/addPaper");
     });
 
 

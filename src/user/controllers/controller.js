@@ -38,6 +38,14 @@ const addNewSession = async (data) => {
     }
 }
 
+const addNewBarnch = asyna(data => {
+    try {
+        const response = await axios.post("http://localhost:8080/api/v1/branch", data);
+        return response;
+    } catch (error) {
+        return error;
+    }
+})
 
 module.exports = {
     addNewInstitute,
