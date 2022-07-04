@@ -50,5 +50,6 @@ const addNewBarnch = asyna(data => {
 module.exports = {
     addNewInstitute,
     getAllInstitute,
-    addNewSession
+    addNewSession,
+    addNewBarnch
 }

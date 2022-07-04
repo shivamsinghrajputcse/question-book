@@ -45,7 +45,7 @@ const addNewBranch = async (fromData) => {
 }
 
 
-// get all the papers for an exam
+// get all the papers of an exam
 const getExamPapers = async (fromData) => {
     return await Paper.find({
         instituteId: fromData.instituteId,
@@ -54,10 +54,12 @@ const getExamPapers = async (fromData) => {
     }).exec();
     // return await Paper.findById(fromData.instituteId).exec();
 }
+
 // get details of all institute
 const getAllInstitute = async () => {
     return await Institute.find({}, "instituteName sessions branches examTypes").exec();
 }
+
 // get details of an institute
 const getOneInstitute = async (id) => {
     return await Institute.findById(id, "instituteName sessions branches examTypes").exec();
@@ -114,5 +116,6 @@ module.exports = {
     addNewPaperToExam,
     getExamPapers,
     getOnePaper,
-    addNewSession
+    addNewSession,
+    addNewBranch,
 }
