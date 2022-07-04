@@ -20,15 +20,27 @@ const addNewInstitute = async (data, origin) => {
 }
 
 const getAllInstitute = async (origin) => {
+    // console.log(origin);
     try {
-        const response = await axios.get(origin + "/api/v1/institute");
+        const response = await axios.get("http://localhost:8080/api/v1/institute");
         return response;
     } catch (error) {
         return error;
     }
 }
 
+const addNewSession = async (data) => {
+    try {
+        const response = await axios.post("http://localhost:8080/api/v1/session", data);
+        return response;
+    } catch (error) {
+        return error;
+    }
+}
+
+
 module.exports = {
     addNewInstitute,
-    getAllInstitute
+    getAllInstitute,
+    addNewSession
 }

@@ -1,15 +1,11 @@
 // APP route
-
-
-
-
 const router = require("express").Router();
 const controller = require("../controllers/controller")
 
 router.route('/')
     .get(async (req, res) => {
-        const instituteData = await controller.getAllInstitute(req.get('origin'));
-        console.log(instituteData);
+        const institutes = await controller.getAllInstitute(req.get('origin'));
+        const institutesData = institutes.data;
         res.render("index");
     })
 
@@ -38,7 +34,7 @@ router.route("/addSession")
         res.render("addSession");
     })
     .post((req, res) => {
-        //controller.addNewSession(req.body);//TODO implemented it
+        controller.addNewSession(req.body);
         res.redirect("/addPaper");
     });
 

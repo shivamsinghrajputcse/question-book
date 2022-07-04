@@ -15,29 +15,43 @@ const addNewInstitute = async (data) => {
         sessions: [],
         examTypes: [],
         branches: []
-    })
+    });
 
     return await newInstitute.save();
-
-
 }
+
+const addNewSession = async (formData) => {
+    return await Institute.findOneAndUpdate({
+        instituteName: formData.instituteName,
+    },
+        {
+            $push: {
+                sessions: formData.session,
+            }
+        },
+    );
+}
+
+
+// get all the papers for an exam
 const getExamPapers = async (fromData) => {
-    // console.log("inside controller");
     return await Paper.find({
         instituteId: fromData.instituteId,
         session: fromData.session,
         branch: fromData.branch,
     }).exec();
-    return await Paper.findById(fromData.instituteId).exec();
+    // return await Paper.findById(fromData.instituteId).exec();
 }
-
+// get details of all institute
 const getAllInstitute = async () => {
     return await Institute.find({}, "instituteName sessions branches examTypes").exec();
 }
+// get details of an institute
 const getOneInstitute = async (id) => {
     return await Institute.findById(id, "instituteName sessions branches examTypes").exec();
 }
 
+//add new exam
 const addNewExam = async (filePath, fromData) => {
     const newPaper = new Paper({
         instituteId: fromData.instituteId,
@@ -60,7 +74,7 @@ const getOnePaper = async (id) => {
 
 
 const addNewPaperToExam = async (filePath, fromData) => {
-    return await Paper.updateOne({
+    return await Paper.findOneAndUpdate({
         instituteId: fromData.instituteId,
         session: fromData.session,
         branch: fromData.branch,
@@ -73,7 +87,8 @@ const addNewPaperToExam = async (filePath, fromData) => {
                     pdf: filePath,
                 }]
             }
-        });
+        },
+    );
 }
 
 
@@ -87,5 +102,5 @@ module.exports = {
     addNewPaperToExam,
     getExamPapers,
     getOnePaper,
-
+    addNewSession
 }

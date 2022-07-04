@@ -40,6 +40,17 @@ router.route("/institute/:id")
         });
     });
 
+// add session post route
+router.route("/session")
+    .post((req, res) => {
+        controller.addNewSession(req.body).then(data => {
+            if (data) {
+                res.send(data);
+            } else {
+                res.send("success");
+            }
+        });
+    });
 
 router.route("/paper")
     .post(upload.single("pdf"), async (req, res) => {
