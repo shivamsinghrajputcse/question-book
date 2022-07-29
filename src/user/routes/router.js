@@ -2,11 +2,27 @@
 const router = require("express").Router();
 const controller = require("../controllers/controller")
 
+let institutes;
+
+async function updateInstituteData() {
+    institutes = await controller.getAllInstitute();
+}
+
+
+
 router.route('/')
     .get(async (req, res) => {
-        const institutes = await controller.getAllInstitute(req.get('origin'));
+        await updateInstituteData();
+
         const institutesData = institutes.data;
-        res.render("index");
+
+        // res.send(institutesData);
+
+        // console.log(instituteData);
+
+        res.render("index", {
+            colleges: institutesData,
+        });
     });
 
 
@@ -26,14 +42,20 @@ router.route('/addInstitute')
     });
 
 router.route("/addPaper")
-    .get((req, res) => {
-        res.render("addPaper");
+    .get(async (req, res) => {
+        await updateInstituteData();
+        res.render("addPaper", {
+            colleges: institutes.data,
+        });
     });
 
 //route for add session
 router.route("/addSession")
-    .get((req, res) => {
-        res.render("addSession");
+    .get(async (req, res) => {
+        await updateInstituteData();
+        res.render("addSession", {
+            colleges: institutes.data,
+        });
     })
     .post((req, res) => {
         controller.addNewSession(req.body);
@@ -42,8 +64,11 @@ router.route("/addSession")
 
 //route for add branch
 router.route("/addBranch")
-    .get((req, res) => {
-        res.render("addBranch");
+    .get(async (req, res) => {
+        await updateInstituteData();
+        res.render("addBranch", {
+            colleges: institutes.data,
+        });
     })
     .post((req, res) => {
         controller.addNewBranch(req.body);

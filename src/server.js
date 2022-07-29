@@ -1,4 +1,3 @@
-//local
 require('dotenv').config();
 const connectDB = require(__dirname + "/api/db/connectDB");
 const app = require(__dirname + "/app");

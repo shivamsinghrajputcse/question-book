@@ -43,6 +43,7 @@ router.route("/institute/:id")
 //route for add session
 router.route("/session")
     .post((req, res) => {
+        // console.log(req.body);
         controller.addNewSession(req.body).then(data => {
             if (data) {
                 res.send(data);
@@ -54,7 +55,7 @@ router.route("/session")
 
 // route for adding branch
 router.route("/branch")
-    .post((req, rees) => {
+    .post((req, res) => {
         controller.addNewBranch(req.body).then(data => {
             if (data) {
                 res.send(data);

@@ -22,7 +22,7 @@ const addNewInstitute = async (data) => {
 
 const addNewSession = async (formData) => {
     return await Institute.findOneAndUpdate({
-        instituteName: formData.instituteName,
+        _id: formData.collegeID,
     },
         {
             $push: {
@@ -30,11 +30,12 @@ const addNewSession = async (formData) => {
             }
         },
     );
+    // console.log(response);
 }
 
 const addNewBranch = async (fromData) => {
     return await Institute.findOneAndUpdate({
-        instituteName: fromData.instituteName,
+        _id: fromData.collegeID,
     },
         {
             $push: {

@@ -19,7 +19,7 @@ const addNewInstitute = async (data, origin) => {
         });
 }
 
-const getAllInstitute = async (origin) => {
+const getAllInstitute = async () => {
     // console.log(origin);
     try {
         const response = await axios.get("http://localhost:8080/api/v1/institute");
@@ -38,18 +38,18 @@ const addNewSession = async (data) => {
     }
 }
 
-const addNewBarnch = asyna(data => {
+const addNewBranch = async (data) => {
     try {
         const response = await axios.post("http://localhost:8080/api/v1/branch", data);
         return response;
     } catch (error) {
         return error;
     }
-})
+}
 
 module.exports = {
     addNewInstitute,
     getAllInstitute,
     addNewSession,
-    addNewBarnch
+    addNewBranch,
 }
