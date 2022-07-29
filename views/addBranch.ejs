@@ -17,27 +17,16 @@
             <label class="form-label">College Name:&nbsp;</label>
             <div class="mb-3">
 
-                <select name="college" id="college" class="form-control">
+                <select name="collegeID" id="college" onchange="showDiv(['sessionOf'],this)" class="form-control">
                     <option value="">Select College</option>
-                    <option value="1">College of Engineering</option>
-                    <option value="2">College of Business</option>
-                    <option value="3">College of Arts</option>
-                    <option value="4">College of Science</option>
+                    <% for(var i=0; i < colleges.length; i++) { %>
+                        <option value="<%= colleges[i]._id %>">
+                            <%= colleges[i].instituteName %>
+                        </option>
+                        <% } %>
                 </select>
-
             </div>
-            <label class="form-label">Session :&nbsp;</label>
-            <div class="mb-3">
 
-                <select name="session" id="session" class="form-control">
-                    <option value="">Select Session</option>
-                    <option value="1">Session 1</option>
-                    <option value="2">Session 2</option>
-                    <option value="3">Session 3</option>
-                    <option value="4">Session 4</option>
-                </select>
-
-            </div>
             <label class="form-label">Branch :&nbsp;</label>
             <div class="mb-3">
 
