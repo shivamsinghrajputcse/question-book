@@ -1,5 +1,6 @@
 const Institute = require("../models/InstituteModel");
 const Paper = require("../models/ExamModel");
+const { instituteValidate } = require("../joi-validators");
 // const upload = require("../middleware/multerUpload");
 
 
@@ -8,6 +9,9 @@ const Paper = require("../models/ExamModel");
 // }
 
 const addNewInstitute = async (data) => {
+    const { error, value } = instituteValidate.validate(data);
+    if(error){ return error;}
+    else{
     const newInstitute = new Institute({
         instituteName: data.institute_name,
         altName: [data.alt_name],
@@ -16,8 +20,8 @@ const addNewInstitute = async (data) => {
         examTypes: [],
         branches: []
     });
-
-    return await newInstitute.save();
+        return await newInstitute.save();
+    }
 }
 
 const addNewSession = async (formData) => {
