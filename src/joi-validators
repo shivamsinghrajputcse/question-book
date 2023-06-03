@@ -1,0 +1,14 @@
+
+const joi = require("joi");
+joi.objectId = require("joi-objectid")(joi);
+
+const instituteValidate = joi.object({
+  instituteName: joi.string().required().min(3).max(100),
+  altName: joi.array().items(joi.string()).required(),
+  website: joi.string().required().min(3).max(100),
+  sessions: joi.array().items(joi.string()).required(),
+  examTypes: joi.array().items(joi.string()).required(),
+  branches: joi.array().items(joi.string()).required()
+});
+
+exports.authValidate = instituteValidate;
