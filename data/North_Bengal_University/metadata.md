@@ -1,2 +1,0 @@
-North Bengal University
-NBU
