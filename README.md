@@ -1,5 +1,5 @@
 # question-book
 
-Still Under Devlopement fell free to contribute.
+Still Under development feel free to contribute.
 
-A web API to access the question papers of verious Institute
+A web API to access the question papers of various Institute
