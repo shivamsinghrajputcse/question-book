@@ -1,4 +1,5 @@
 import app from "./app/app"
+import "dotenv/config"
 
 const PORT = process.env.PORT || 3000
 
@@ -12,6 +13,6 @@ const server = () => {
     }
 }
 
-server()
+server();
 
 export default server
