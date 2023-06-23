@@ -7,7 +7,7 @@
     "start": "npm run build && node .",
     "build": "rimraf ./dist && tsc -p tsconfig.build.json",
     "test": "jest",
-    "dev": "rimraf ./dist && tsc-watch -p tsconfig.build.json --onSuccess \"nodemon --inspect=0.0.0.0 ./dist/src/server.js\"",
+    "dev": "rimraf ./dist && tsc-watch -p tsconfig.build.json --onSuccess \"nodemon --inspect=0.0.0.0 ./dist/server.js\"",
     "lint": "eslint --ext .ts src/",
     "format": "prettier --write src/**/*.ts",
     "check-formatting": "prettier --check src/**/*.ts",

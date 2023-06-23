@@ -4,7 +4,7 @@ import { Server } from 'http';
 
 let server: Server;
 
-beforeEach((done) => {
+beforeEach((done: jest.DoneCallback) => {
   // Start your server and store the server instance
   server = app.listen(3000, () => {
     console.log('Server started');
@@ -21,13 +21,15 @@ afterEach((done) => {
 });
 
 describe('GET /', () => {
-  it('should return success message', (done) => {
+  it('Should return success message', (done) => {
     request(app)
       .get('/')
       .expect(200)
-      .end((err, res) => {
-        if (err) return done(err);
-        done();
+      .then(() => {
+        done()
+      })
+      .catch((err?: string) => {
+        done.fail(err)
       });
   });
 });
