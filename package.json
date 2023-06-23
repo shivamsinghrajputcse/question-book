@@ -4,7 +4,7 @@
   "description": "An api to access question papers of university",
   "main": "dist/server.js",
   "scripts": {
-    "start": "node .",
+    "start": "npm run build && node .",
     "build": "rimraf ./dist && tsc -p tsconfig.build.json",
     "test": "jest",
     "dev": "rimraf ./dist && tsc-watch -p tsconfig.build.json --onSuccess \"nodemon --inspect=0.0.0.0 ./dist/server.js\"",
